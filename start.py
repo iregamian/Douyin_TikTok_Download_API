@@ -35,7 +35,9 @@
 
 
 from app.main import Host_IP, Host_Port
+import os
 import uvicorn
 
 if __name__ == '__main__':
-    uvicorn.run('app.main:app', host=Host_IP, port=Host_Port, reload=True, log_level="info")
+    port = int(os.environ.get('PORT', Host_Port))
+    uvicorn.run('app.main:app', host=Host_IP, port=port, reload=True, log_level="info")

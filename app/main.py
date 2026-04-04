@@ -56,8 +56,8 @@ with open(config_path, 'r', encoding='utf-8') as file:
     config = yaml.safe_load(file)
 
 
-Host_IP = config['API']['Host_IP']
-Host_Port = config['API']['Host_Port']
+Host_IP = os.environ.get('HOST_IP', config['API']['Host_IP'])
+Host_Port = int(os.environ.get('PORT', config['API']['Host_Port']))
 
 # API Tags
 tags_metadata = [
